@@ -1,0 +1,38 @@
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+    <br>SIGN IN<br>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+      {% csrf_token %}
+      {{form.username}}
+      {{form.password}}
+      <input type="submit" class="fadeIn fourth" value="Log In">
+      {{form.error_list}}
+      {{messages.error}}
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+      </ul>
+      {% endif %}
+    </form>
+
+
+  </div>
+</div>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
